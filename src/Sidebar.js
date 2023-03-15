@@ -4,7 +4,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import SidebarChannel from "./SidebarChannel";
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
-// import { InfoOutlined } from "@mui/icons-material";
 import InfoIcon from '@mui/icons-material/Info';
 import CallIcon from '@mui/icons-material/Call';
 import { Avatar } from '@mui/material';
@@ -20,7 +19,7 @@ import { auth } from "./features/firebase";
 function Sidebar() {
     const user = useSelector(selectUser);
     
-   
+
     return (
     <div>
     { user !== null ? (
@@ -62,10 +61,12 @@ function Sidebar() {
         </div>
         </div>
         <div className="sidebar__profile">
-            <Avatar onClick={() => auth.signOut()} src= {user.photo} />
-                <div className="sidebar__profileInfo">
-                 <h3>{user.displayName !== null && (<p>{user.displayName}</p>)}</h3>
-                    <p>#{user.uid !== null && (<p>{user.uid.substring (0, 5)}</p>)}</p>
+        <Avatar onClick={() => auth.signOut()} src= {user.photo} />
+            <div className="sidebar__profileInfo">
+                <h3>{user.displayName !== null && (<p>{user.displayName}</p>)}</h3>
+                    {user.uid && (<p>#{user.uid.substring(0, 5)}</p>)}
+                 
+    
             </div>
 
             <div className="sidebar__profileIcons">
@@ -89,3 +90,10 @@ function Sidebar() {
 
 
 export default Sidebar;
+
+
+{/* <Avatar onClick={() => auth.signOut()} src= {user.photo} />
+<div className="sidebar__profileInfo">
+ <h3>{user.displayName !== null && (<p>{user.displayName}</p>)}</h3>
+ {user.uid && (<p>#{user.uid.substring(0, 5)}</p>
+)} */}
