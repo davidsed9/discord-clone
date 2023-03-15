@@ -21,7 +21,7 @@ function App() {
             uid: authUser.uid,
             photo: authUser.photoURL,
             email: authUser.email,
-            displayName: authUser.displayName,
+            displayName: authUser.displayName
           })
         );
       } else {

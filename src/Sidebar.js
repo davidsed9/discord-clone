@@ -33,36 +33,39 @@ function Sidebar() {
         <div className="sidebar__channels">
             <div className="sidebar__channelsHeader">
                 <div className="sidebar__header">
-        <ExpandMoreIcon />
-            <h4>Text Channels</h4>
+                 <ExpandMoreIcon />
+                        <h4>Text Channels</h4>
                 </div>
 
                 <AddIcon className="sidebar__addChannel"/>
             </div>
             <div className="sidebar__channelsList">
-            <SidebarChannel />
-            <SidebarChannel />
-            <SidebarChannel />
+             <SidebarChannel />
+             <SidebarChannel />
+             <SidebarChannel />
             </div>
         </div>
         <div className="sidebar__voice">
-            <SignalCellularAltIcon
+                <SignalCellularAltIcon
             className="sidebar__voiceIcon"
             fontSize="large"
             />
         <div className="sidebar__voiceInfo">
-            <h3>Voice Connected</h3>
-            <p>Stream</p>
+                <h3>Voice Connected</h3>
+                     <p>Stream</p>
         </div>
 
         <div className="sidebar__voiceIcons">
-            <InfoIcon />
-            <CallIcon />
+                 <InfoIcon />
+                <CallIcon />
         </div>
         </div>
         <div className="sidebar__profile">
-        <Avatar onClick={() => auth.signOut()} src= {user.photo} />
-            <div className="sidebar__profileInfo">
+            <div className="sidebar__profileInfo"> 
+                   <Avatar  onClick={() => auth.signOut()} src= {user.photoURL} />
+                   console.log(user.photo);
+                   console.log(user.displayName);
+                   console.log(user.uid);
                 <h3>{user.displayName !== null && (<p>{user.displayName}</p>)}</h3>
                     {user.uid && (<p>#{user.uid.substring(0, 5)}</p>)}
                  
@@ -92,8 +95,3 @@ function Sidebar() {
 export default Sidebar;
 
 
-{/* <Avatar onClick={() => auth.signOut()} src= {user.photo} />
-<div className="sidebar__profileInfo">
- <h3>{user.displayName !== null && (<p>{user.displayName}</p>)}</h3>
- {user.uid && (<p>#{user.uid.substring(0, 5)}</p>
-)} */}
