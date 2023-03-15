@@ -6,10 +6,10 @@ import SidebarChannel from "./SidebarChannel";
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import InfoIcon from '@mui/icons-material/Info';
 import CallIcon from '@mui/icons-material/Call';
-import { Avatar } from '@mui/material';
 import MicIcon from '@mui/icons-material/Mic';
 import HeadsetIcon from '@mui/icons-material/Headset';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { Avatar } from '@mui/material';
 import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
 import { auth } from "./features/firebase";
@@ -19,6 +19,9 @@ import { auth } from "./features/firebase";
 function Sidebar() {
     const user = useSelector(selectUser);
     
+    // if (!user) {
+    //     return null;
+    // }
 
     return (
     <div>
@@ -62,12 +65,12 @@ function Sidebar() {
         </div>
         <div className="sidebar__profile">
             <div className="sidebar__profileInfo"> 
-                   <Avatar  onClick={() => auth.signOut()} src= {user.photoURL} />
-                  {console.log("photo",user.photo)}
+                   <Avatar  onClick={() => auth.signOut()} src= {user?.photo} />
+                   {console.log("photo",user.photo)}
                    {console.log("name", user.displayName)}
                    {console.log("uid",user.uid)}
-                <h3>{user.displayName !== null && (<p>{user.displayName}</p>)}</h3>
-                    {user.uid && (<p>#{user.uid.substring(0, 5)}</p>)}
+                        <h3>{user?.displayName && (<p>{user.displayName}</p>)}</h3>
+                            {user?.uid && (<p>#{user.uid.substring(0, 5)}</p>)}
              </div>
 
             <div className="sidebar__profileIcons">
@@ -75,7 +78,6 @@ function Sidebar() {
                 <HeadsetIcon />
                 <SettingsIcon />
             </div>
-
         </div>
     </div>
     ):(
@@ -83,9 +85,6 @@ function Sidebar() {
     )}
  </div>
     );
-   
-
-       
 
 }
 
