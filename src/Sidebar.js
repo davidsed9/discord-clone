@@ -63,14 +63,12 @@ function Sidebar() {
         <div className="sidebar__profile">
             <div className="sidebar__profileInfo"> 
                    <Avatar  onClick={() => auth.signOut()} src= {user.photoURL} />
-                   console.log(user.photo);
-                   console.log(user.displayName);
-                   console.log(user.uid);
+                  {console.log("photo",user.photo)}
+                   {console.log("name", user.displayName)}
+                   {console.log("uid",user.uid)}
                 <h3>{user.displayName !== null && (<p>{user.displayName}</p>)}</h3>
                     {user.uid && (<p>#{user.uid.substring(0, 5)}</p>)}
-                 
-    
-            </div>
+             </div>
 
             <div className="sidebar__profileIcons">
                 <MicIcon />
